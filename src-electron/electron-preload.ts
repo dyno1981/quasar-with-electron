@@ -27,10 +27,14 @@
  *   }
  * }
  */
-import {contextBridge, ipcRenderer as ir} from 'electron'
+import { contextBridge, ipcRenderer as ir } from 'electron'
 
 contextBridge.exposeInMainWorld('api', {
   saveTextFile (text: string) {
     return ir.invoke('saveTextFile', text)
+  },
+
+  loadTextFile () {
+    return ir.invoke('loadTextFile')
   }
 })
